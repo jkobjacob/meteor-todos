@@ -19,21 +19,28 @@ export const App = () => {
     TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
   );
   return (
-    <div>
-      <h1>Meteor Todo's</h1>
+    <div className="app">
+      <header>
+        <div className="app-bar">
+          <div className="app-header">
+            <h1>Meteor Todo's</h1>
+          </div>
+        </div>
+      </header>
 
-      <TaskForm />
-
-      <ul>
-        {tasks.map((task) => (
-          <Task
-            key={task._id}
-            task={task}
-            onCheckboxClick={toggleChecked}
-            onDeleteClick={deleteTask}
-          />
-        ))}
-      </ul>
+      <div className="main">
+        <TaskForm />
+        <ul className="tasks">
+          {tasks.map((task) => (
+            <Task
+              key={task._id}
+              task={task}
+              onCheckboxClick={toggleChecked}
+              onDeleteClick={deleteTask}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
